@@ -1,7 +1,7 @@
 <?php
     include_once 'app/model/model.php';
 
-    class ProductoDAO extends Model {
+    class ClienteDAO extends Model {
         
         public function getClientes(){
             $this->connect();
