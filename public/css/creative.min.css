@@ -14,3 +14,14 @@
  .registro-ventas {
      text-align: center;
  }
+ select, input {
+    background-color: transparent;
+    border-radius: 3px;
+    height: 30px;
+    border: 1px solid #999;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#cantidad {
+    width: 100px;
+}
