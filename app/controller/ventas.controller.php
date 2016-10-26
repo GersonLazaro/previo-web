@@ -114,7 +114,7 @@
             $ventaDAO->setVenta($total, $totalIva, $totalDesc, $idCliente);
             $ventaDAO->setVentaPorProducto($_SESSION['productos']);
             session_destroy();
-            $this->showView("<script>alert(Venta registrada exitosamente</script>");
+            $this->showView("<script>alert('Venta registrada exitosamente')</script>");
         }
 
 
