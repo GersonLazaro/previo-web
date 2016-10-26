@@ -9,7 +9,7 @@
             $this->query("INSERT INTO detalleventa (idproducto, idfactura, cantidad, valoriva, valordescuento, total) 
                              values ('".$idproducto."','".$this->serial."','".$cantidad."','".$valoriva."','".$valordescuento."','".$total."')");
             $result= $this->query("SELECT p.existencias FROM producto p WHERE p.id=".$idproducto);
-            $nuevaCantidad = mysqli_fetch_array($result)-$cantidad;
+            $nuevaCantidad = mysqli_fetch_array($result)['existencias']- $cantidad;
             $this->query("UPDATE producto SET existencias=".$nuevaCantidad);
             $this->terminate();
         }
