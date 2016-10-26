@@ -3,7 +3,7 @@
 
     class ProductoDAO extends Model {
         private $serial;
-        private $DAOProductoPorVenta = new ProductoPorVentaDAO();
+        private $DAOProductoPorVenta;
 
         public function getProductos() {
             $this->connect();
@@ -26,6 +26,7 @@
             if($row = mysqli_fetch_array($result)){
                 $this->serial = $row['numerofactura']+1;
             }
+            $this->DAOProductoPorVenta = new ProductoPorVentaDAO();
             $this->DAOProductoPorVenta.setNumeroFactura($this->serial);
         }
 
