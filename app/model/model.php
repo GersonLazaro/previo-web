@@ -1,8 +1,8 @@
 <?php
     /**
     * Previo II - Programación web
-    * @author - Gerson Lázaro <gerson@hackerearth.com>
-    * 1150972
+    * @author - Gerson Lázaro <gerson@hackerearth.com> Elizabeth Ramírez <eramirezvillamizar@gmail.com>
+    * 1150972-1151256
     *
     * Clase abstracta generica utilitaria con las funciones comunes para la conexión a base de datos.
     * Cada DAO extiende de esta clase. 
