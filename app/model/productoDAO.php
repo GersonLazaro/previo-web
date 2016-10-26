@@ -36,7 +36,7 @@
 
         public function getProductoPorId($id){
             $this->connect();
-            $result = $this->query("SELECT p.existencias, p.nombre, p.tipo, p.precioventa FROM producto p WHERE p.id=".$id.);
+            $result = $this->query("SELECT p.existencias, p.nombre, p.tipo, p.precioventa FROM producto p WHERE p.id=".$id);
             $this->terminate();
             $row = mysqli_fetch($result);
             $DTO = new ProductoDTO(null, $row['nombre'], $row['tipo'], $row['precioventa'], $row['existencias'], null);
