@@ -29,8 +29,17 @@
 
         public function setVenta($valortotal, $valordescuentos, $valoriva, $idcliente){
             $this->connect();
-            $restult = $this->query("INSERT INTO venta (numerofactura, valortotal, valordescuentos, valoriva, idcliente) 
-                                        values (".$this->serial.",".$valortotal.",".$valordescuentos.",".$valoriva.",".$idcliente.")");
+            $this->query("INSERT INTO venta (numerofactura, valortotal, valordescuentos, valoriva, idcliente) 
+                                 values (".$this->serial.",".$valortotal.",".$valordescuentos.",".$valoriva.",".$idcliente.")");
+            $this->terminate();
+        }
+
+        public function setDetalleventa($idproducto, $cantidad, $valoriva, $valordescuento, $total){
+            $this->connect();
+            $this->query("INSERT INTO detalleventa (idproducto, idfactura, cantidad, valoriva, valordescuento, total) 
+                             values (".$idproducto.",".$serial.",".$cantidad.",".$valoriva.",".$valordescuento.",".$total.")");
+            $nuevaCantidad = $this->query("SELECT p.existencias FROM producto p WHERE p.idproducto=".$idproducto);
+            $this->query("UPDATE producto SET existencias=".$nuevaCantidad);
             $this->terminate();
         }
 
