@@ -16,7 +16,7 @@
 			<select name="productos" id="productos" onchange="cargarDatosProducto()" required>
                     {{PRODUCTOS}}
                 </select>
-			<label for="cantidad">Cantidad</label>
+			<label for="cantidad" id="lcant">Cantidad</label>
 			<input type="number" id="cantidad" name="cantidad" placeholder="Cantidad" disabled required>
 			<p>Precio <span id="precio"></span></p>
             <input type="submit" class="btn btn-primary" value="Añadir Producto a la venta">
