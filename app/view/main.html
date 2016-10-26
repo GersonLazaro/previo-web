@@ -74,7 +74,13 @@
             var xhttp = new XMLHttpRequest()
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText)
+                    json = JSON.parse(this.responseText)
+                    cantidad = document.getElementById("cantidad")
+                    cantidad.max = json.existencias
+                    cantidad.min = 1
+                    cantidad.value = 1
+                    cantidad.disabled = false
+                    document.getElementById("precio").innerHTML = json.precioVenta
                 }
             }
             xhttp.open("GET", "index.php?mode=obtenerInventario&id="+num, true);

@@ -43,7 +43,9 @@
             $productoDAO = new ProductoDAO();
             $productos = $productoDAO->getTotalProductos();
             for($i = 0; $i < count($productos); $i++) {
-                $opciones .= '<option value='.$productos[$i]->id.'>'.$productos[$i]->nombre.'</option>';
+                if($productos[$i]->existencias > 0) {
+                    $opciones .= '<option value='.$productos[$i]->id.'>'.$productos[$i]->nombre.'</option>';
+                }
             }
             $this->viewRegistro = $this->renderView($this->viewRegistro, '{{PRODUCTOS}}', $opciones);
             $this->view = $this->renderView($this->view, '{{CONTENT}}', $this->viewRegistro);

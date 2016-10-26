@@ -1,24 +1,24 @@
 <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h1 id="homeHeading">Registro de ventas</h1>
-                <hr>
-                <p>A continuación puedes registrar nuevas ventas.</p>
-            </div>
-        </div>
-    </header>
-<section>
-    <div class="row">
-        <div class="container">
-            <h1>Selecciona un producto y su cantidad</h1>
-            <form action="index.php">
-                <input type="hidden" name="mode" value="registrarVenta"> 
-                <label for="productos">Nombre del producto:</label>
-                <select name="productos" id="productos" onchange="cargarDatosProducto()">
+	<div class="header-content">
+		<div class="header-content-inner">
+			<h1 id="homeHeading">Registro de ventas</h1>
+			<hr>
+			<p>A continuación puedes registrar nuevas ventas.</p>
+		</div>
+	</div>
+</header>
+<div class="container ventas">
+	<div class="row">
+		<h1>Selecciona un producto y su cantidad</h1>
+		<form action="index.php">
+			<input type="hidden" name="mode" value="registrarVenta">
+			<label for="productos">Nombre del producto:</label>
+			<select name="productos" id="productos" onchange="cargarDatosProducto()">
                     {{PRODUCTOS}}
                 </select>
-            </form>
-        </div>
-    </div>
-    
-</section>
+			<label for="cantidad">Cantidad</label>
+			<input type="number" id="cantidad" name="cantidad" placeholder="Cantidad" disabled required>
+			<p>Precio <span id="precio"></span></p>
+		</form>
+	</div>
+</div>
