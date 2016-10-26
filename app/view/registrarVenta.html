@@ -3,7 +3,7 @@
             <div class="header-content-inner">
                 <h1 id="homeHeading">Registro de ventas</h1>
                 <hr>
-                <p>A continuaciòn puedes registrar nuevas ventas.</p>
+                <p>A continuación puedes registrar nuevas ventas.</p>
             </div>
         </div>
     </header>
@@ -14,7 +14,7 @@
             <form action="index.php">
                 <input type="hidden" name="mode" value="registrarVenta"> 
                 <label for="productos">Nombre del producto:</label>
-                <select name="productos" id="productos">
+                <select name="productos" id="productos" onchange="cargarDatosProducto()">
                     {{PRODUCTOS}}
                 </select>
                 <label for="cantidad">Cantidad:</label>

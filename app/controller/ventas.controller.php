@@ -25,7 +25,7 @@
             $productos = $productoDAO->getProductos();
             $productosView = '';
             for($i = 0; $i < count($productos); $i++) {
-                $productosView .= '<tr><td>'.$productos[$i]->totalVentas.'</td><td>'.$productos[$i]->id.'</td><td>'.$productos[$i]->nombre.'</td></tr>';
+                $productosView .= '<tr><td>'.$productos[$i]->id.'</td><td>'.$productos[$i]->nombre.'</td><td>'.$productos[$i]->totalVentas.'</td></tr>';
             }
             $this->view = $this->getTemplate('main.html');
             $this->viewVenta = $this->getTemplate('listarVentas.html');
@@ -43,12 +43,14 @@
             $productoDAO = new ProductoDAO();
             $productos = $productoDAO->getTotalProductos();
             for($i = 0; $i < count($productos); $i++) {
-                $opciones .= '<option onselected="cambiarSelect('.$productos[$i]->existencias.')" value='.$productos[$i]->id.'>'.$productos[$i]->nombre.'</option>';
+                $opciones .= '<option value='.$productos[$i]->id.'>'.$productos[$i]->nombre.'</option>';
             }
             $this->viewRegistro = $this->renderView($this->viewRegistro, '{{PRODUCTOS}}', $opciones);
             $this->view = $this->renderView($this->view, '{{CONTENT}}', $this->viewRegistro);
             $this->showView($this->view);
         }
+
+
 
     }
 
