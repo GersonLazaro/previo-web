@@ -8,8 +8,8 @@
             $this->connect();
             $this->query("INSERT INTO detalleventa (idproducto, idfactura, cantidad, valoriva, valordescuento, total) 
                              values ('".$idproducto."','".$this->serial."','".$cantidad."','".$valoriva."','".$valordescuento."','".$total."')");
-            $result= $this->query("SELECT p.existencias FROM producto p WHERE p.idproducto=".$idproducto);
-            $nuevaCantidad = mysqli_fetch_array($result);
+            $result= $this->query("SELECT p.existencias FROM producto p WHERE p.id=".$idproducto);
+            $nuevaCantidad = mysqli_fetch_array($result)-$cantidad;
             $this->query("UPDATE producto SET existencias=".$nuevaCantidad);
             $this->terminate();
         }
@@ -31,6 +31,7 @@
         }
 
         public function setVenta($valortotal, $valordescuentos, $valoriva, $idcliente){
+            $this->getSerial();
             $this->connect();
             $this->query("INSERT INTO venta (numerofactura, valortotal, valordescuentos, valoriva, idcliente) 
                                  values ('".$this->serial."','".$valortotal."','".$valordescuentos."','".$valoriva."','".$idcliente."')");
