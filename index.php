@@ -13,7 +13,10 @@
 
     include_once 'app/model/model.php';
     include_once 'app/model/productoDAO.php';
+    include_once 'app/model/productoPorVentaDTO.php';
     include_once 'app/model/productoDTO.php';
+
+    session_start();
 
     //Se inicia un enrutador y se enruta la petición al controlador respectivo
     $router = new Router();

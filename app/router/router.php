@@ -48,6 +48,9 @@
                 $this->ventas->listarVentas();
             } else if($mode == 'obtenerInventario') {
                 $this->ventas->obtenerInventario($_GET['id']);
+            } else if($mode == 'registrarProductoVenta') {
+                $this->ventas->agregarProductoVenta($_POST['productos'], $_POST['cantidad']);
+                header('Location: registrarVenta#ventas-success');
             }
         }
     }

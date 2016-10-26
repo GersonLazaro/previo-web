@@ -39,7 +39,7 @@
             $this->view = $this->getTemplate('main.html');
             $this->viewRegistro = $this->getTemplate('registrarVenta.html');
 
-            $opciones = '';
+            $opciones = '<option value=""></option>';
             $productoDAO = new ProductoDAO();
             $productos = $productoDAO->getTotalProductos();
             for($i = 0; $i < count($productos); $i++) {
@@ -49,10 +49,28 @@
             }
             $this->viewRegistro = $this->renderView($this->viewRegistro, '{{PRODUCTOS}}', $opciones);
             $this->view = $this->renderView($this->view, '{{CONTENT}}', $this->viewRegistro);
+            if(isset($_SESSION['productos']) && count($_SESSION['productos']) > 0) {
+                $this->view = $this->renderView($this->view, '{{TABLE}}', $this->getTemplate('productosVenta.html'));
+                $this->view = $this->renderView($this->view, '{{CONTENT_TABLE}}', $this->getProductosVenta());
+            } else {
+                $this->view = $this->renderView($this->view, '{{TABLE}}', '');
+            }
+            
             $this->showView($this->view);
         }
 
+        public function agregarProductoVenta($id, $cantidad) {
+            if(!isset($_SESSION['productos'])) {
+                $_SESSION['productos'] = array();
+            }
+            $producto = new ProductoPorVentaDTO($id, $cantidad);
 
+            array_push($_SESSION['productos'], $producto);
+        }
+
+        public function getProductosVenta() {
+
+        }
 
 
         /**

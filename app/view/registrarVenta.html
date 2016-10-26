@@ -7,18 +7,20 @@
 		</div>
 	</div>
 </header>
-<div class="container ventas">
+<div class="container ventas" id="ventas-success">
 	<div class="row">
 		<h1>Selecciona un producto y su cantidad</h1>
-		<form action="index.php">
-			<input type="hidden" name="mode" value="registrarVenta">
+		<form action="index.php" method="POST">
+			<input type="hidden" name="mode" value="registrarProductoVenta">
 			<label for="productos">Nombre del producto:</label>
-			<select name="productos" id="productos" onchange="cargarDatosProducto()">
+			<select name="productos" id="productos" onchange="cargarDatosProducto()" required>
                     {{PRODUCTOS}}
                 </select>
 			<label for="cantidad">Cantidad</label>
 			<input type="number" id="cantidad" name="cantidad" placeholder="Cantidad" disabled required>
 			<p>Precio <span id="precio"></span></p>
+            <input type="submit" value="Añadir Producto a la venta">
 		</form>
+        {{TABLE}}
 	</div>
 </div>
