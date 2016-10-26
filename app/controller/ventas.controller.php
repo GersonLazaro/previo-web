@@ -69,7 +69,11 @@
         }
 
         public function getProductosVenta() {
-
+            $productos = '';
+            for($i = 0; $i < count($_SESSION['productos']); $i++) {
+                $productos .= '<tr><td>'.$_SESSION['productos'][$i]->idProducto.'</td><td>'.$_SESSION['productos'][$i]->nombreProducto.'</td><td>'.$_SESSION['productos'][$i]->cantidad.'</td><td>'.$_SESSION['productos'][$i]->precioUnidad.'</td><td>'.$_SESSION['productos'][$i]->subtotal.'</td><td>'.$_SESSION['productos'][$i]->valorDescuento.'</td><td>'.$_SESSION['productos'][$i]->valorIva.'</td><td>'.$_SESSION['productos'][$i]->total.'</td></tr>';
+            }
+            return $productos;
         }
 
 

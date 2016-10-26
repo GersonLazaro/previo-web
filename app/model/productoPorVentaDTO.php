@@ -4,6 +4,7 @@
         public $idProducto;
         public $nombreProducto;
         public $cantidad;
+        public $precioUnidad;
         public $subtotal;
         public $valorDescuento;
         public $valorIva;
@@ -18,6 +19,7 @@
             $this->idProducto = $id;
             $this->nombreProducto = $productoDTO->nombre;
             $this->cantidad = $cantidad;
+            $this->precioUnidad = $productoDTO->precioVenta;
             $this->subtotal = $productoDTO->precioVenta * $cantidad;
             $iva; $desc;
             if($productoDTO->tipo == 1) {
