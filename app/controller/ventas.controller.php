@@ -39,9 +39,10 @@
             $this->view = $this->getTemplate('main.html');
             $this->viewRegistro = $this->getTemplate('registrarVenta.html');
 
-            $opciones = '<option value=""></option>';
+            
             $productoDAO = new ProductoDAO();
             $productos = $productoDAO->getTotalProductos();
+            $opciones = '<option value=""></option>';
             for($i = 0; $i < count($productos); $i++) {
                 if($productos[$i]->existencias > 0) {
                     $opciones .= '<option value='.$productos[$i]->id.'>'.$productos[$i]->nombre.'</option>';
