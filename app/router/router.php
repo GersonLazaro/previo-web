@@ -52,7 +52,7 @@
                 $this->ventas->agregarProductoVenta($_POST['productos'], $_POST['cantidad']);
                 header('Location: registrarVenta#ventas-success');
             } else if($mode == 'guardarVenta') {
-                $this->ventas->guardarVenta();
+                $this->ventas->guardarVenta($_POST['clientes']);
             }
         }
     }

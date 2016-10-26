@@ -93,7 +93,7 @@
             
             $clienteDAO = new ClienteDAO();
             $clientesDTO = $clienteDAO->getClientes();
-            $clientes = '<option>'.count($clientesDTO).'</option>';
+            $clientes = '<option value=""></option>';
             for($i = 0; $i < count($clientesDTO); $i++) {
                 $clientes .= '<option value="'.$clientesDTO[$i]->id.'">'.$clientesDTO[$i]->nombre." ".$clientesDTO[$i]->apellido.'</option>';
             }
@@ -101,10 +101,20 @@
         }
 
 
-        public function guardarVenta() {
-            $VentaDAO = new VentaDAO();
-            $VentaDAO->setVentaPorProducto($_SESSION['productos']);
-
+        public function guardarVenta($idCliente) {
+            $ventaDAO = new VentaDAO();
+            $totalIva = 0;
+            $totalDesc = 0;
+            $total = 0;
+            for($i = 0; $i < count($_SESSION['productos']); $i++) {
+                $total += $_SESSION['productos'][$i]->total;
+                $totalIva += $_SESSION['productos'][$i]->valorIva;
+                $totalDesc += $_SESSION['productos'][$i]->valorDescuento;
+            }
+            $ventaDAO->setVenta($total, $totalIva, $totalDesc, $idCliente);
+            $ventaDAO->setVentaPorProducto($_SESSION['productos']);
+            session_destroy();
+            $this->showView("<script>alert(Venta registrada exitosamente</script>");
         }
 
 

@@ -21,8 +21,10 @@
 
 <form action="index.php" method="POST">
     <input type="hidden" name="mode" value="guardarVenta">
+	<label for="clientes">Cliente: </label>
     <select name="clientes" id="clientes" required>
         {{CLIENTES}}
     </select>
+	<br>
 	<input type="submit" class="btn btn-primary"  value="Registrar Venta">
 </form>
