@@ -52,6 +52,7 @@
             if(isset($_SESSION['productos']) && count($_SESSION['productos']) > 0) {
                 $this->view = $this->renderView($this->view, '{{TABLE}}', $this->getTemplate('productosVenta.html'));
                 $this->view = $this->renderView($this->view, '{{CONTENT_TABLE}}', $this->getProductosVenta());
+                $this->view = $this->renderView($this->view, '{{CLIENTES}}', $this->getClientes());
             } else {
                 $this->view = $this->renderView($this->view, '{{TABLE}}', '');
             }
@@ -63,20 +64,47 @@
             if(!isset($_SESSION['productos'])) {
                 $_SESSION['productos'] = array();
             }
-            $producto = new ProductoPorVentaDTO($id, $cantidad);
+            $producto = new VentaDTO($id, $cantidad);
 
             array_push($_SESSION['productos'], $producto);
         }
 
         public function getProductosVenta() {
             $productos = '';
+            $totalIva = 0;
+            $totalDesc = 0;
+            $subtotal = 0;
+            $cantidad = 0;
+            $total = 0;
             for($i = 0; $i < count($_SESSION['productos']); $i++) {
+                $total += $_SESSION['productos'][$i]->total;
+                $totalIva += $_SESSION['productos'][$i]->valorIva;
+                $totalDesc += $_SESSION['productos'][$i]->valorDescuento;
+                $cantidad += $_SESSION['productos'][$i]->cantidad;
+                $subtotal += $_SESSION['productos'][$i]->subtotal;
                 $productos .= '<tr><td>'.$_SESSION['productos'][$i]->idProducto.'</td><td>'.$_SESSION['productos'][$i]->nombreProducto.'</td><td>'.$_SESSION['productos'][$i]->cantidad.'</td><td>'.$_SESSION['productos'][$i]->precioUnidad.'</td><td>'.$_SESSION['productos'][$i]->subtotal.'</td><td>'.$_SESSION['productos'][$i]->valorDescuento.'</td><td>'.$_SESSION['productos'][$i]->valorIva.'</td><td>'.$_SESSION['productos'][$i]->total.'</td></tr>';
             }
+            $productos .= '<tr class="negrilla"><td>Total</td><td></td><td>'.$cantidad.'</td><td></td><td>'.$subtotal.'</td><td>'.$totalDesc.'</td><td>'.$totalIva.'</td><td>'.$total.'</td></tr>';
+
             return $productos;
         }
 
+        public function getClientes() {
+            
+            $clienteDAO = new ClienteDAO();
+            $clientesDTO = $clienteDAO->getClientes();
+            $clientes = '<option>'.count($clientesDTO).'</option>';
+            for($i = 0; $i < count($clientesDTO); $i++) {
+                $clientes .= '<option value="'.$clientesDTO[$i]->id.'">'.$clientesDTO[$i]->nombre." ".$clientesDTO[$i]->apellido.'</option>';
+            }
+            return $clientes;
+        }
+
+
         public function guardarVenta() {
+            $VentaDAO = new VentaDAO();
+            $VentaDAO->setVentaPorProducto($_SESSION['productos']);
+
         }
 
 

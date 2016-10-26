@@ -18,4 +18,11 @@
 	</tbody>
     
 </table>
-<a href="/guardarVenta">Registrar Venta</a>
+
+<form action="index.php" method="POST">
+    <input type="hidden" name="mode" value="guardarVenta">
+    <select name="clientes" id="clientes" required>
+        {{CLIENTES}}
+    </select>
+	<input type="submit" class="btn btn-primary"  value="Registrar Venta">
+</form>

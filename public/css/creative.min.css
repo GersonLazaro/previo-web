@@ -6,4 +6,11 @@
 
  .ventas {
      margin-top: 60px;
+     margin-bottom: 60px;
+ }
+ .negrilla, .negrilla td {
+     font-weight: bold;
+ }
+ .registro-ventas {
+     text-align: center;
  }
