@@ -22,7 +22,7 @@
             $this->connect();
             $result = $this->query("SELECT numerofactura FROM venta ORDER BY numerofactura DESC LIMIT 1");
             $this->terminate();
-            if($row = mysqli_fetch($result)){
+            if($row = mysqli_fetch_array($result)){
                 $serial = $row['numerofactura']+1;
             }
         }
@@ -38,7 +38,7 @@
             $this->connect();
             $result = $this->query("SELECT p.existencias, p.nombre, p.tipo, p.precioventa FROM producto p WHERE p.id=".$id);
             $this->terminate();
-            $row = mysqli_fetch($result);
+            $row = mysqli_fetch_array($result);
             $DTO = new ProductoDTO(null, $row['nombre'], $row['tipo'], $row['precioventa'], $row['existencias'], null);
             return $DTO;
         }
