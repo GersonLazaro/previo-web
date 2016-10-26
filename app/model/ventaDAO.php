@@ -16,7 +16,7 @@
         public function setVentaPorProducto($arrayDTO){
             for($i=0;$i<count($arrayDTO);$i++) {
                 $DTO=$arrayDTO[$i];
-                $this->setDetalleventa($DTO['idProducto'], $DTO['cantidad'], $DTO['valorIva'], $DTO['valorDescuento'], $DTO['total']);
+                $this->setDetalleventa($DTO->idProducto, $DTO->cantidad, $DTO->valorIva, $DTO->valorDescuento, $DTO->total);
             }
         }
 
