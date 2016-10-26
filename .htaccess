@@ -1,0 +1,5 @@
+# Activar RewriteEngine
+RewriteEngine on
+ 
+# Reescribir la URL solicitada por el usuario
+RewriteRule ^(\w+)/?$ index.php?mode=$1

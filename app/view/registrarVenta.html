@@ -1,0 +1,26 @@
+<header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">Registro de ventas</h1>
+                <hr>
+                <p>A continuaciòn puedes registrar nuevas ventas.</p>
+            </div>
+        </div>
+    </header>
+<section>
+    <div class="row">
+        <div class="container">
+            <h1>Selecciona un producto y su cantidad</h1>
+            <form action="index.php">
+                <input type="hidden" name="mode" value="registrarVenta"> 
+                <label for="productos">Nombre del producto:</label>
+                <select name="productos" id="productos">
+                    {{PRODUCTOS}}
+                </select>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" min="1" disabled id="maximo" required>
+            </form>
+        </div>
+    </div>
+    
+</section>
