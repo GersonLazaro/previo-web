@@ -12,7 +12,7 @@
                 $DTO = new ClienteDTO($row['id'], $row['nombre'], $row['apellido']);
                 array_push($arreglo, $DTO);
             }
-            return $DTO;
+            return $arreglo;
         }
 
     }
