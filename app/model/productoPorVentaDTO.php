@@ -21,20 +21,20 @@
             $this->cantidad = $cantidad;
             $this->precioUnidad = $productoDTO->precioVenta;
             $this->subtotal = $productoDTO->precioVenta * $cantidad;
-            $iva; $desc;
-            if($productoDTO->tipo == 1) {
+            $iva = 0; $desc = 0;
+            if($productoDTO->tipo == 'Electrodomesticos') {
                 $iva = 0.10;
                 $desc = 0.05;
-            } else if($productoDTO->tipo == 2) {
+            } else if($productoDTO->tipo == 'Medicamentos') {
                 $iva = 0.04;
                 $desc = 0.10;
-            } else if($productoDTO->tipo == 3) {
+            } else if($productoDTO->tipo == 'Frutas y Verduras') {
                 $iva = 0;
                 $desc = 0.10;
-            } else if($productoDTO->tipo == 4) {
+            } else if($productoDTO->tipo == 'Vestir') {
                 $iva = 0.08;
                 $desc = 0;
-            } else if($productoDTO->tipo == 5) {
+            } else if($productoDTO->tipo == 'Bebidas Alcoholicas y cigarrillos') {
                 $iva = 0.20;
                 $desc = 0;
             }

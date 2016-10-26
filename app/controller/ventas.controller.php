@@ -76,6 +76,9 @@
             return $productos;
         }
 
+        public function guardarVenta() {
+        }
+
 
         /**
         * AJAX
