@@ -3,6 +3,7 @@
 
     class ProductoDAO extends Model {
         private $serial;
+        private $DAOProductoPorVenta = new ProductoPorVentaDAO();
 
         public function getProductos() {
             $this->connect();
@@ -23,8 +24,9 @@
             $result = $this->query("SELECT numerofactura FROM venta ORDER BY numerofactura DESC LIMIT 1");
             $this->terminate();
             if($row = mysqli_fetch_array($result)){
-                $serial = $row['numerofactura']+1;
+                $this->serial = $row['numerofactura']+1;
             }
+            $this->DAOProductoPorVenta.setNumeroFactura($this->serial);
         }
 
         public function setVenta($valortotal, $valordescuentos, $valoriva, $idcliente){
@@ -34,14 +36,6 @@
             $this->terminate();
         }
 
-        public function setDetalleventa($idproducto, $cantidad, $valoriva, $valordescuento, $total){
-            $this->connect();
-            $this->query("INSERT INTO detalleventa (idproducto, idfactura, cantidad, valoriva, valordescuento, total) 
-                             values (".$idproducto.",".$serial.",".$cantidad.",".$valoriva.",".$valordescuento.",".$total.")");
-            $nuevaCantidad = $this->query("SELECT p.existencias FROM producto p WHERE p.idproducto=".$idproducto);
-            $this->query("UPDATE producto SET existencias=".$nuevaCantidad);
-            $this->terminate();
-        }
 
         public function getProductoPorId($id){
             $this->connect();
