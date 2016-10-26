@@ -19,6 +19,7 @@
             return $arreglo;
         }
 
+
         public function getSerial(){
             $this->connect();
             $result = $this->query("SELECT numerofactura FROM venta ORDER BY numerofactura DESC LIMIT 1");
@@ -58,6 +59,8 @@
             }
             return $arreglo;
         }
+
+
     }
 
 
