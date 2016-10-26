@@ -2,9 +2,7 @@
     include_once 'app/model/model.php';
 
     class ProductoDAO extends Model {
-        private $serial;
-        private $DAOProductoPorVenta;
-
+        
         public function getProductos() {
             $this->connect();
             $result = $this->query("SELECT p.id, p.nombre, d.suma FROM producto p, 
@@ -17,25 +15,6 @@
                 array_push($arreglo, $DTO);
             }
             return $arreglo;
-        }
-
-
-        public function getSerial(){
-            $this->connect();
-            $result = $this->query("SELECT numerofactura FROM venta ORDER BY numerofactura DESC LIMIT 1");
-            $this->terminate();
-            if($row = mysqli_fetch_array($result)){
-                $this->serial = $row['numerofactura']+1;
-            }
-            $this->DAOProductoPorVenta = new ProductoPorVentaDAO();
-            $this->DAOProductoPorVenta.setNumeroFactura($this->serial);
-        }
-
-        public function setVenta($valortotal, $valordescuentos, $valoriva, $idcliente){
-            $this->connect();
-            $this->query("INSERT INTO venta (numerofactura, valortotal, valordescuentos, valoriva, idcliente) 
-                                 values (".$this->serial.",".$valortotal.",".$valordescuentos.",".$valoriva.",".$idcliente.")");
-            $this->terminate();
         }
 
 

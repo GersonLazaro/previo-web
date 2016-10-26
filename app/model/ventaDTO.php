@@ -1,6 +1,6 @@
 <?php
 
-    class ProductoPorVentaDTO {
+    class VentaDTO {
         public $idProducto;
         public $nombreProducto;
         public $cantidad;
