@@ -52,6 +52,17 @@
 
 
 
+
+        /**
+        * AJAX
+        */
+        public function obtenerInventario($id) {
+            $productoDAO = new ProductoDAO();
+            $producto = $productoDAO->getProductoPorId($id);
+            echo json_encode($producto);
+        }
+
+
     }
 
 

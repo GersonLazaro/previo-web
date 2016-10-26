@@ -36,7 +36,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="inicio">Productos</a>
+                <a class="navbar-brand page-scroll" href="index">Productos</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -69,12 +69,16 @@
     <script src="public/js/dataTables.min.js"></script>
     <script src="public/js/dataTables.bootstrap.min.js"></script>
     <script>
-        function cambiarSelect(num) {
-            select = document.getElementById("maximo");
-            select.max = num;
-            select.disabled = false;
-            console.log("paso");
-            
+        function cargarDatosProducto() {
+            num = document.getElementById("productos").selectedOptions[0].value;
+            var xhttp = new XMLHttpRequest()
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText)
+                }
+            }
+            xhttp.open("GET", "index.php?mode=obtenerInventario&id="+num, true);
+            xhttp.send();
         }
 
 

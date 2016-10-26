@@ -46,6 +46,8 @@
                 $this->ventas->registrarVenta();
             } else if($mode == 'listarVentas') {
                 $this->ventas->listarVentas();
+            } else if($mode == 'obtenerInventario') {
+                $this->ventas->obtenerInventario($_GET['id']);
             }
         }
     }
