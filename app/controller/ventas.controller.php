@@ -47,8 +47,6 @@
             }
             $this->viewRegistro = $this->renderView($this->viewRegistro, '{{PRODUCTOS}}', $opciones);
             $this->view = $this->renderView($this->view, '{{CONTENT}}', $this->viewRegistro);
-
-            $this->view = $this
             $this->showView($this->view);
         }
 
